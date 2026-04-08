@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manikandankb.me | Coming Soon</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --bg-dark: #0f172a;
+            --text-light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 40%);
+            color: var(--text-light);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Animated Background Elements */
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            opacity: 0.3;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: -150px;
+            right: -100px;
+            opacity: 0.2;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Main Container */
+        .container {
+            text-align: center;
+            padding: 3rem;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* Countdown Style */
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .timer-unit {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timer-value {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .timer-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #64748b;
+            letter-spacing: 0.1em;
+        }
+
+        /* Subscription Form */
+        .subscribe-form {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1rem;
+            color: white;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input::placeholder {
+            color: #475569;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Success Message Overlay */
+        #message-box {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s ease-out;
+            z-index: 100;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 2rem 1.5rem; }
+            .timer { gap: 1rem; }
+            .subscribe-form { flex-direction: column; background: transparent; border: none; padding: 0; }
+            input { background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid var(--glass-border); margin-bottom: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <div id="message-box">Thanks for subscribing!</div>
+
+    <div class="container">
+        <div class="logo">Manikandankb.me</div>
+        <h1>Something great is brewing.</h1>
+        <p>Manikandankb.me is coming soon. <br>Enter your email below to be the first to know when I launch my new site.</p>
+        
+        <div class="timer">
+            <div class="timer-unit">
+                <span class="timer-value" id="days">12</span>
+                <span class="timer-label">Days</span>
+            </div>
+            <div class="timer-unit">
+                <span class="timer-value" id="hours">08</span>
+                <span class="timer-label">Hours</span>
+            </div>
+            <div class="timer-unit">
+                <span class="timer-value" id="minutes">45</span>
+                <span class="timer-label">Mins</span>
+            </div>
+            <div class="timer-unit">
+                <span class="timer-value" id="seconds">30</span>
+                <span class="timer-label">Secs</span>
+            </div>
+        </div>
+
+        <form class="subscribe-form" onsubmit="handleSubmit(event)">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Notify Me</button>
+        </form>
+    </div>
+
+    <script>
+        // Simple Countdown Logic
+        function updateCountdown() {
+            // Set a target date 12 days from now for demo purposes
+            const now = new Date().getTime();
+            const target = new Date();
+            target.setDate(target.getDate() + 12);
+            
+            const distance = target - now;
+
+            // Simple static values for demo if you don't want real-time calculation, 
+            // but let's make the seconds tick!
+            setInterval(() => {
+                const s = document.getElementById('seconds');
+                let val = parseInt(s.innerText);
+                if (val > 0) {
+                    s.innerText = (val - 1).toString().padStart(2, '0');
+                } else {
+                    s.innerText = "59";
+                    // Note: Real apps would calculate from a fixed target date
+                }
+            }, 1000);
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('message-box');
+            msg.style.display = 'block';
+            e.target.reset();
+            
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        window.onload = updateCountdown;
+    </script>
+</body>
+</html>
